@@ -1,3 +1,37 @@
-body {
-  padding: 20px;
+html{
+	width: 400px;
+}
+
+.todo{
+	margin-bottom: 0px;
+}
+
+.todo li:after {
+	display: none;
+}
+
+.ui-match {
+    background-color: #FFC200;
+}
+
+.todo-icon {
+	padding: 25px 22px 0 0;
+}
+
+.todo-search {
+border-radius: 0;
+}
+
+.navbar, .todo ul {
+margin: 0px;
+border-radius: 0px;
+}
+
+.last-update .btn, .login-alert .btn{
+border-radius: 0px;
+}
+
+.google-logo{
+	padding: 10px;
+	width: 380px;
 }

@@ -1,23 +1,60 @@
 <!doctype html>
-<html>
+<html ng-app="launcher" ng-csp>
     <head>
         <meta charset="utf-8">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/flat-ui/dist/css/flat-ui.css">
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
         <link href="styles/main.css" rel="stylesheet">
         <!-- endbuild -->
     </head>
-    <body>
-        <h1>'Allo, 'Allo!</h1>
-
+    <body ng-controller="listControllers">
+        <div class="row last-update">
+            <div class="col-xs-12">
+                <a href="#" ng-click="openDashBoard()">
+                    <img class="google-logo" src="/images/devConsoleLogo.svg">
+                </a>
+            </div>
+            <div class="col-xs-12">
+                <a href="#" ng-click="update()" ng-class="{'btn-info':gcl.logined,'btn-danger':!gcl.logined}" class="btn btn-block btn-lg"><span ng-class="{'fui-time':gcl.logined, 'fui-alert-circle':!gcl.logined}"></span> {{ gcl.lastupdate }}</a>
+            </div>
+        </div>
+        <div class="todo" ng-if="gcl.logined">
+            <div class="todo-search">
+                <input class="todo-search-field" type="search" value="" placeholder="Search"  ng-model="searchText">
+            </div>
+            <ul>
+                <li ng-class="{'todo-done':project.status==1}" ng-repeat="project in gcl.projects | orderBy:'status':false | filter:searchText">
+                    <div class="todo-icon" ng-class="{'fui-alert-circle':project.status==1,'todo-icon fui-eye':project.status==0}"></div>
+                    <div class="todo-content">
+                        <h4 class="todo-name">
+                        <span class="label label-danger" ng-if="project.status==1">pending deletion</span>
+                        <span ng-click="openProject(project)" ng-bind-html="project.name | highlight:searchText"></span>
+                        </h4>
+                        <div class="list-group-item-text" ng-class="{'text-danger':project.status==1}">
+                            <div>
+                                ID: <b ng-bind-html="project.assignedIdForDisplay | highlight:searchText"></b>
+                            </div>
+                            <div>
+                                GAE: <a ng-click="openAppEngine(project)" href="#">{{project.appEngineProjectId}}</a> (<a ng-click="openRunning(project)" href="#">Running</a>)
+                            </div>
+                            <div>
+                                Billing: <a ng-click="openBilling(project)" href="#" >{{project.numericProjectId}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
-
         <!-- build:js scripts/popup.js -->
         <script src="scripts/popup.js"></script>
         <!-- endbuild -->
