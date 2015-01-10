@@ -2,13 +2,13 @@
 
 'use strict';
 
-var bg = chrome.extension.getBackgroundPage();
 
-angular.module('launcher', ['launcher.services', 'launcher.controllers', 'launcher.filter']);
+angular.module('launcher', ['launcher.services', 'launcher.controllers', 'launcher.filter'])
+    .value('bg', chrome.extension.getBackgroundPage());
 
 angular.module('launcher.services', [])
-    .factory('project', ['$q',
-        function($q) {
+    .factory('project', ['$q', 'bg',
+        function($q, bg) {
             var get = function(force) {
                 force = force || false;
 
@@ -30,8 +30,8 @@ angular.module('launcher.services', [])
     ]);
 
 angular.module('launcher.controllers', [])
-    .controller('listControllers', ['$scope', 'project',
-        function($scope, project) {
+    .controller('listControllers', ['$scope', 'project', 'bg',
+        function($scope, project, bg) {
 
             project.get().then(function(data) {
                 $scope.gcl = data;
