@@ -1,6 +1,6 @@
 {
     "name": "GDCLanucher",
-    "version": "0.0.19",
+    "version": "0.0.25",
     "manifest_version": 2,
     "description": "A way to quick lanucher Google Developers Console",
     "icons": {
@@ -10,7 +10,6 @@
     "default_locale": "en",
     "content_security_policy": "script-src 'self' https://console.developers.google.com/m; object-src 'self'",
     "background": {
-        "persistent": false,
         "scripts": [
             "scripts/chromereload.js",
             "scripts/background.js"
@@ -30,6 +29,7 @@
     "permissions": [
         "tabs",
         "https://console.developers.google.com/*",
-        "activeTab"
+        "activeTab",
+        "background"
     ]
 }
