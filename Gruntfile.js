@@ -182,14 +182,14 @@ module.exports = function(grunt) {
         htmlmin: {
             dist: {
                 options: {
-                    // removeCommentsFromCDATA: true,
-                    // collapseWhitespace: true,
-                    // collapseBooleanAttributes: true,
-                    // removeAttributeQuotes: true,
-                    // removeRedundantAttributes: true,
-                    // useShortDoctype: true,
-                    // removeEmptyAttributes: true,
-                    // removeOptionalTags: true
+                    removeCommentsFromCDATA: true,
+                    collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true
                 },
                 files: [{
                     expand: true,
@@ -240,6 +240,17 @@ module.exports = function(grunt) {
                         'styles/{,*/}*.css',
                         'styles/fonts/{,*/}*.*',
                         '_locales/{,*/}*.json',
+                    ]
+                }]
+            },
+            fonts:{
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>/bower_components/flat-ui',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        'fonts/{,*/}*.*'
                     ]
                 }]
             }
@@ -315,11 +326,12 @@ module.exports = function(grunt) {
         'uglify',
         'copy',
         'usemin',
-        'compress'
+        // 'htmlmin'
+        // 'compress'
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
+        // 'jshint',
         'test',
         'build'
     ]);

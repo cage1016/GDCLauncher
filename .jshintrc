@@ -20,6 +20,8 @@
     "smarttabs": true,
     "globals" : {
         "chrome": true,
-        "angular": true
+        "angular": true,
+        "Promise": true,
+        "xhr": true
     }
 }
