@@ -193,7 +193,7 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= config.app %>',
+                    cwd: '<%= config.dist %>',
                     src: '*.html',
                     dest: '<%= config.dist %>'
                 }]
@@ -326,12 +326,12 @@ module.exports = function(grunt) {
         'uglify',
         'copy',
         'usemin',
-        // 'htmlmin'
-        // 'compress'
+        'htmlmin',
+        'compress'
     ]);
 
     grunt.registerTask('default', [
-        // 'jshint',
+        'jshint',
         'test',
         'build'
     ]);
