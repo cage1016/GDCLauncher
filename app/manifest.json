@@ -1,8 +1,8 @@
 {
     "name": "GDCLauncher",
-    "version": "0.0.27",
+    "version": "0.0.28",
     "manifest_version": 2,
-    "description": "A way to quick launcher Google Developers Console",
+    "description": "One way to quick launch Google Developers Console",
     "icons": {
         "16": "images/launch-16.png",
         "128": "images/launch-128.png"
