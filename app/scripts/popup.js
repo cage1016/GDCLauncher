@@ -8,15 +8,15 @@ angular.module('launcher', ['launcher.services', 'launcher.controllers', 'launch
 
 angular.module('launcher.services', [])
     .factory('project', ['$q', 'bg',
-        function($q, bg) {
-            var get = function(force) {
+        function ($q, bg) {
+            var get = function (force) {
                 force = force || false;
 
                 var deferred = $q.defer();
 
-                bg.getProjects(force).then(function(data) {
+                bg.getProjects(force).then(function (data) {
                     return bg.updateIcon(data);
-                }).then(function(data) {
+                }).then(function (data) {
                     deferred.resolve(data);
                 });
 
@@ -31,36 +31,40 @@ angular.module('launcher.services', [])
 
 angular.module('launcher.controllers', [])
     .controller('listControllers', ['$scope', 'project', 'bg',
-        function($scope, project, bg) {
+        function ($scope, project, bg) {
 
-            project.get().then(function(data) {
+            project.get().then(function (data) {
                 $scope.gcl = data;
             });
 
-            $scope.openDashBoard = function() {
+            $scope.openDashBoard = function () {
                 bg.open('https://console.developers.google.com/project');
             };
 
-            $scope.openProject = function(project) {
+            $scope.openProject = function (project) {
                 bg.open('https://console.developers.google.com/project/' + project.id);
             };
-            $scope.openAppEngine = function(project) {
+            $scope.openAppEngine = function (project) {
                 bg.open('https://console.developers.google.com/project/' + project.appEngineProjectId + '/appengine');
             };
 
-            $scope.openBilling = function(project) {
+            $scope.openBilling = function (project) {
                 bg.open('https://console.developers.google.com/billing/' + project.numericProjectId);
             };
 
-            $scope.openRunning = function(project) {
+            $scope.openRunning = function (project) {
                 bg.open('http://' + project.id + '.appspot.com/');
             };
 
-            $scope.login = function() {
+            $scope.openMonitoring = function (project) {
+                bg.open('https://app.google.stackdriver.com/account/login/' + project.id + '/');
+            };
+
+            $scope.login = function () {
                 bg.open('https://accounts.google.com/ServiceLogin');
             };
 
-            $scope.update = function() {
+            $scope.update = function () {
                 var regex = /\(([^)]+)\)/g;
                 var msg = $scope.gcl.lastupdate.match(regex)[0];
                 if ($scope.gcl.logined) {
@@ -68,7 +72,7 @@ angular.module('launcher.controllers', [])
                 } else {
                     $scope.gcl.lastupdate = $scope.gcl.lastupdate.replace(msg, ' (checking...)');
                 }
-                project.get(true).then(function(data) {
+                project.get(true).then(function (data) {
                     $scope.gcl = data;
                 });
             };
@@ -77,8 +81,8 @@ angular.module('launcher.controllers', [])
 
 angular.module('launcher.filter', [])
     .filter('highlight', ['$sce',
-        function($sce) {
-            return function(text, search, caseSensitive) {
+        function ($sce) {
+            return function (text, search, caseSensitive, injectNewWindowIcon) {
                 var result;
                 if (search || angular.isNumber(search)) {
                     text = text.toString();
@@ -91,6 +95,11 @@ angular.module('launcher.filter', [])
                 } else {
                     result = text;
                 }
+
+                if (injectNewWindowIcon) {
+                    result = result + ' <span class="btn-sm glyphicon glyphicon-new-window"></span>';
+                }
+
                 return $sce.trustAsHtml(result);
             };
         }

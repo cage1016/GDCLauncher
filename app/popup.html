@@ -33,17 +33,25 @@
                     <div class="todo-content">
                         <h4 class="todo-name">
                         <span class="label label-danger" ng-if="project.status==1">pending deletion</span>
-                        <span ng-click="openProject(project)" ng-bind-html="project.name | highlight:searchText"></span>
+                            <span class="project-name" ng-click="openProject(project)" ng-bind-html="project.name | highlight:searchText:false:true"></span>
                         </h4>
                         <div class="list-group-item-text" ng-class="{'text-danger':project.status==1}">
                             <div>
                                 ID: <b ng-bind-html="project.assignedIdForDisplay | highlight:searchText"></b>
                             </div>
                             <div>
-                                GAE: <a ng-click="openAppEngine(project)" href="#">{{project.appEngineProjectId}}</a> (<a ng-click="openRunning(project)" href="#">Running</a>)
+                                <div>
+                                    GAE: <a ng-click="openAppEngine(project)" href="#">{{project.appEngineProjectId}} <span class="btn-xs glyphicon glyphicon-new-window"></span></a>
+                                </div>
+                                <div class="gae-running">
+                                    (<a ng-click="openRunning(project)" href="#">Running <span class="btn-xs glyphicon glyphicon-new-window"></span></a>)
+                                </div>
                             </div>
                             <div>
-                                Billing: <a ng-click="openBilling(project)" href="#" >{{project.numericProjectId}}</a>
+                                Billing: <a ng-click="openBilling(project)" href="#" >{{project.numericProjectId}} <span class="btn-xs glyphicon glyphicon-new-window"></span></a>
+                            </div>
+                            <div>
+                                Monitoring: <a ng-click="openMonitoring(project)" href="#" ng-bind-html="project.assignedIdForDisplay | highlight:searchText:false:true"></a>
                             </div>
                         </div>
                     </div>
