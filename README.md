@@ -12,11 +12,15 @@ features:
   - GAE dashboard link
   - GAE running link
   - billing page link
+  - monitoring page link
 2. omnibox search
 
 
 ##Change Log
 
+### 2015.1.29
+ - monitoring page link
+ - UI minor modify
 
 ##Snapshot
 
