@@ -12,6 +12,7 @@ features:
   - GAE dashboard link
   - GAE running link
   - billing page link
+  - monitoring page link
 2. omnibox search
 
 
