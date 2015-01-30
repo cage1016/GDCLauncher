@@ -250,7 +250,15 @@ module.exports = function(grunt) {
                     cwd: '<%= config.app %>/bower_components/flat-ui',
                     dest: '<%= config.dist %>',
                     src: [
-                        'fonts/{,*/}*.*'
+                        'fonts/{,*/}*.woff'
+                    ]
+                },{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>/bower_components/bootstrap-css-only',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        'fonts/{,*/}*.woff'
                     ]
                 }]
             }

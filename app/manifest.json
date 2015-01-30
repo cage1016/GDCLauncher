@@ -1,6 +1,6 @@
 {
     "name": "GDCLauncher",
-    "version": "0.0.29",
+    "version": "0.0.31",
     "manifest_version": 2,
     "description": "One way to quick launch Google Developers Console",
     "icons": {
