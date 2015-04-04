@@ -1,9 +1,13 @@
 node_modules
 temp
 .tmp
+.idea
 dist
 .sass-cache
-app/bower_components
+bower_components
+app/javascript
+app/scripts
+app/styles
 test/bower_components
 package
-.idea
+.ideax
