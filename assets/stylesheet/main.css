@@ -1,0 +1,28 @@
+html, body {
+    height: auto;
+}
+
+#app .item .list > a .icon, #app .item a.header .icon, #app .item div.description .icon {
+    padding-left: 5px;
+}
+
+#app .icon.inline {
+    display: inline;
+}
+
+.ui-match {
+    background-color: #FFC200;
+}
+
+#search{
+    margin: 15px 5px;
+}
+
+.logo-container{
+    background-color: #ffffff;
+    padding: 0 15px;
+}
+
+.logo-container:hover{
+    cursor: pointer;
+}
