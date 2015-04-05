@@ -35,7 +35,8 @@ Project.prototype.fetch = function(force) {
 			return get(settings.GOOGLE_DEVELOPERS_CONSOLE_URL).then(function(data) {
 				var gcl = {
 					'projects': data,
-					'logined': true
+					'logined': true,
+					'lastupdate': new Date().Format('yyyy-MM-dd hh:mm:ss')
 				};
 				gdclStorage.save(gcl);
 
