@@ -1,9 +1,9 @@
 'use strict';
 
-var BASE_URL = 'https://console.developers.google.com/';
+var BASE_URL = 'https://console.cloud.google.com/'
 
 
-module.exports.GOOGLE_DEVELOPERS_CONSOLE_URL = BASE_URL + 'm/project';
+module.exports.GOOGLE_DEVELOPERS_CONSOLE_URL = BASE_URL + 'm/recentProjects?maxProjects=20';
 
 module.exports.STATUSCOLOR = {
 	ERR: {
@@ -26,4 +26,4 @@ module.exports.RUNNING = 'http://%(id)s.appspot.com';
 
 module.exports.MONITORING = BASE_URL + 'project/%(id)s/monitoring/stackdriver-signup';
 
-module.exports.LOGIN = 'https://accounts.google.com/ServiceLogin';
+module.exports.LOGIN = 'https://console.cloud.google.com/';

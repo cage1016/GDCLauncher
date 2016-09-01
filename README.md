@@ -17,6 +17,10 @@ features:
 
 ##Change Log
 
+### 2016.9.1
+
+- fixed login does work issus cause GCP console renew
+
 ### 2015.4.5
 
 -	change UI themes from bootstrap to semantic-ui
