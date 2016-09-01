@@ -27,7 +27,7 @@
     },
     "permissions": [
         "tabs",
-        "https://console.developers.google.com/*",
+        "https://console.cloud.google.com/*",
         "activeTab",
         "background"
     ]
