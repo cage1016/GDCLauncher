@@ -14,16 +14,16 @@ module.exports.STATUSCOLOR = {
 	}
 };
 
-module.exports.OPENDASHBOARD = BASE_URL + 'project';
+module.exports.OPENDASHBOARD = BASE_URL + 'home/dashboard';
 
-module.exports.APPENGINE = BASE_URL + 'project/%(appEngineProjectId)s/appengine';
+module.exports.APPENGINE = BASE_URL + 'appengine?project=%(id)s';
 
-module.exports.PROJECT = BASE_URL + 'project/%(id)s';
+module.exports.PROJECT = BASE_URL + 'home/dashboard?project=%(id)s';
 
 module.exports.BILLING = BASE_URL + 'billing/%(numericProjectId)s';
 
 module.exports.RUNNING = 'http://%(id)s.appspot.com';
 
-module.exports.MONITORING = BASE_URL + 'project/%(id)s/monitoring/stackdriver-signup';
+module.exports.MONITORING = BASE_URL + 'monitoring/stackdriver-signup?project=%(id)s';
 
 module.exports.LOGIN = 'https://console.cloud.google.com/';

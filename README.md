@@ -17,6 +17,11 @@ features:
 
 ##Change Log
 
+### 2016.9.10
+
+- fixed AppEngine link does not work
+- add copy project id feature
+
 ### 2016.9.1
 
 - fixed login does work issus cause GCP console renew
